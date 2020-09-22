@@ -20,12 +20,14 @@ void mostrarestats(int cant,struct Personajes *Heroes);
 
 main()
 {
-	 int veces = 0,op=0,so=1,cant,o;
+	 int veces = 0,op=0,cant,o;
 	 char nom[tam][tam];
 	 	     
 	do
 	{
-		 printf("Ingresa la opcion que deseas ejecutar\n1-Suma y promedio de 5 numeros\n2-Captura y muestra de datos\n3-Estadisticas de personaje\n4-Mostrar heroes\n ");
+		 printf("Ingresa la opcion que deseas ejecutar\n1-Suma y promedio de 5 numeros\n");
+		 printf("2-Captura y muestra de datos\n3-Estadisticas de personaje\n4-Mostrar heroes\n");
+		 printf("5-Salir\n");
 		     scanf("%i",&op);
 		     
 		 switch(op)	
@@ -58,21 +60,24 @@ main()
 				     scanf("%i",&o);
 					    
 					     mostrarestats(o,Heroes);
+						 break;
+
+			 case 5: 
+			     break;
      }
-         printf("\n\nDeseas ejecutar otra opcion?\n1-si\n2-no\n");
-             scanf("%i",&so);
              
-    }while(so!=2);
+    }while(op!=5);
           	
 }
 
 int numeros5()
 {
-	int num[5],i,suma=0,prom=0;
+	int num[5],i,suma=0;
+	float prom=0;
 	     
 	             printf("Ingresa 5 numeros para sumar y conocer su promedio\n");
 	         
-	     for(i=0;i<5;i++)
+	     for(size_t i=0;i<5;i++)
 	     {
 	     	scanf("%i",&num[i]);
 	     	suma+=num[i];
@@ -85,7 +90,7 @@ int numeros5()
 		for(i=0;i<5;i++)		         
 	          	printf("%i|",num[i]);          
 	          	
-			    printf("\nLa suma total es = %i\nEl promedio es = %i\n",suma,prom);	
+			    printf("\nLa suma total es = %i\nEl promedio es = %.2f\n",suma,prom);	
 }
 
 void capturar(int veces,char nom[tam][tam])
