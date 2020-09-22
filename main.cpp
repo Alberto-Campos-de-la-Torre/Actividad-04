@@ -1,22 +1,13 @@
 #include "stdlib.h"
 #include "stdio.h"
+#include "personaje.h"
+
 #define tam 100
 
-struct Personajes
-{	
-	char Nom_y_Tip[2][tam];
-	int  sal;
-	int  fue;
-	
-}Heroes[5];
 
 int  numeros5();
 void capturar(int veces,char nom[tam][tam]);
 void mostrar (int veces,char nom[tam][tam]);
-void estats(struct Personajes *Heroes,int cant);
-void mostrarestats(int cant,struct Personajes *Heroes);
-
-
 
 main()
 {
@@ -25,7 +16,7 @@ main()
 	 	     
 	do
 	{
-		 printf("Ingresa la opcion que deseas ejecutar\n1-Suma y promedio de 5 numeros\n");
+		 printf("\nIngresa la opcion que deseas ejecutar\n1-Suma y promedio de 5 numeros\n");
 		 printf("2-Captura y muestra de datos\n3-Estadisticas de personaje\n4-Mostrar heroes\n");
 		 printf("5-Salir\n");
 		     scanf("%i",&op);
@@ -51,7 +42,7 @@ main()
 					     printf("Solo puedes tener 5 heroes!\n");					     
 					     
 				}while(cant>5);
-             	 estats(Heroes,cant);
+             	 capturar_personaje(Heroes,cant);
              	     break;
              	      
              case 4:
@@ -111,43 +102,4 @@ void mostrar(int veces,char nom[tam][tam])
          for(i=0;i<veces;i++)
            	 printf("%i-%s\n",i+1,nom[i]);
 }
-void estats(struct Personajes Heroe[5],int cant)
-{
-	 int i,j=0;
-	 char stats[4][tam]={"Nombre","Tipo","Fuerza","Vida"};
-	 
-	 do
-	 {
-	     for(i=0;i<4;i++)
-		 {
-		 	 printf("\n%s de tu Hero #%i - ",stats[i],j+1);
-		 	     if(i<2)
-		 	     {
-		 	         fflush(stdin);gets((Heroe+j)->Nom_y_Tip[i]);
-		 	     }
-		 	     if(i==2)
-		 	         scanf("%i",&(Heroe+j)->fue);
-		 	     if(i==3)
-		 	         scanf("%i",&(Heroe+j)->sal);		 	     
-		 }
-		     
-		 j++;
-		 
-	}while(j<cant);
-}
-void mostrarestats(int cant,struct Personajes Heroe[5])
-{
-	 int i;
-	 char stats[4][tam]={"Nombre","Tipo","Fuerza","Vida"};
-	         
-	         printf("Personaje #%i\n",cant);
-	     for(i=0;i<4;i++)
-		 {
-		 	 if(i<2)
-		 	 printf("\n%s-%s",stats[i],(Heroe+cant-1)->Nom_y_Tip[i]);
-		 	 if(i==2)
-		 	 printf("\n%s-%i",stats[i],(Heroe+cant-1)->fue);
-		 	 if(i==3)
-		 	 printf("\n%s-%i",stats[i],(Heroe+cant-1)->sal);
-	}
-}
+
